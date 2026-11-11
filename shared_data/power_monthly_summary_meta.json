@@ -1,0 +1,13 @@
+{
+ "provider": "NASA POWER (Agroclimatology community)",
+ "years_used": [
+  2016,
+  2025
+ ],
+ "point": {
+  "latitude": 15.29,
+  "longitude": 120.02
+ },
+ "note": "Monthly climatology from daily regional estimates, not farm-plot measurements. Time standard for this file was the API default, not set explicitly.",
+ "rain_mean_mm": "average of the monthly totals across years"
+}

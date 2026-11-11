@@ -1,5 +1,52 @@
 ﻿# Progress log (Amudhan S)
 
+## 11 Nov 2026 - NASA competition sprint, NASA data day
+
+### Done
+- Built src/power_for_app.py: fetches NASA POWER daily data (T2M, RH2M,
+  PRECTOTCORR, ALLSKY_SFC_SW_DWN) for a planning point near Botolan
+  (15.29 N, 120.02 E), LST time standard
+- Output: shared_data/power_botolan.json, 1096 days (2023-11-05 to 2026-11-04),
+  with provenance (provider, units, dates, retrieval time, is_cached flag)
+- Missing values: 1 in sunshine ([date from step 2]), none elsewhere
+- Cached fallback: if NASA fails, the script reuses the saved file and
+  marks it is_cached = true
+- Monthly climate summary: shared_data/power_monthly_summary.csv
+  (10 years, 2016-2025) for crop scoring [add only if step 1 ran]
+- Placeholder field boundary: shared_data/pilot_plot.geojson
+  (not a verified plot) [add only if step 3 done]
+
+### Caveats
+- POWER is a regional satellite/model-derived estimate, not a plot measurement
+- Planning point and boundary are placeholders until the pilot plot and
+  landowner permission are confirmed
+- POWER vs IMERG disagreement on 4 Sept 2024 is still unexplained
+
+### Waiting on team
+- Confirm my role (Member 2?), pilot plot coordinates, data format needs
+
+### Next
+1. Check with the frontend developer that the JSON loads in AgriMind AI
+2. Provide anything the analytics and research members need
+3. Test SoilGrids with one request only if time allows
+
+---
+
+(earlier entries below)
+
+## 10 Nov 2026 - Week 1
+
+
+
+
+
+
+
+
+
+
+# Progress log (Amudhan S)
+
 ## 10 Nov 2026 - Week 1
 
 ### Setup done

@@ -27,6 +27,8 @@ Never put passwords in code or commit them.
 - extract_imerg.py: downloads one IMERG day at a time, keeps a 5x5 pixel box
   around Botolan, deletes the big file (safe for low-RAM laptops)
 - analyze_blur.py: spread of pixels inside the box, IMERG vs POWER stats
+- power_for_app.py: app-ready NASA POWER JSON with provenance and cached fallback
+- monthly_summary.py: monthly climate summary for crop scoring
 
 ## Data
 The data/ folder is not in git. Recreate it by running the scripts.
