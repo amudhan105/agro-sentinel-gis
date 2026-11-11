@@ -7,7 +7,7 @@ from pathlib import Path
 LAT, LON = 15.29, 120.02          # approximate Botolan, planning point
 END = date.today() - timedelta(days=7)      # POWER lags a few days
 START = END - timedelta(days=3 * 365)
-OUT = Path("shared_data/power_botolan.json")
+OUT = Path("nasa-challenge/datasets/power_botolan.json")
 
 URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
 PARAMS = {

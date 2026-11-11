@@ -31,8 +31,8 @@ summary["season_assumed"] = [
 print(summary)
 print("\nYears used:", df.index.year.min(), "to", df.index.year.max())
 
-Path("shared_data").mkdir(exist_ok=True)
-summary.to_csv("shared_data/power_monthly_summary.csv")
+Path("nasa-challenge/datasets").mkdir(exist_ok=True)
+summary.to_csv("nasa-challenge/datasets/power_monthly_summary.csv")
 
 meta = {
     "provider": "NASA POWER (Agroclimatology community)",
@@ -43,6 +43,6 @@ meta = {
              "was the API default, not set explicitly."),
     "rain_mean_mm": "average of the monthly totals across years",
 }
-Path("shared_data/power_monthly_summary_meta.json").write_text(
+Path("nasa-challenge/datasets/power_monthly_summary_meta.json").write_text(
     json.dumps(meta, indent=1), encoding="utf-8")
-print("Saved shared_data/power_monthly_summary.csv and _meta.json")
+print("Saved nasa-challenge/datasets/power_monthly_summary.csv and _meta.json")

@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pilot plot placeholder",
+        "status": "placeholder, not a verified plot"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [120.010831, 15.3087858],
+            [120.0116541, 15.3087452],
+            [120.0114764, 15.3084728],
+            [120.0110789, 15.3083995],
+            [120.0107001, 15.308183],
+            [120.010831, 15.3087858]
+          ]
+        ]
+      }
+    }
+  ]
+}
