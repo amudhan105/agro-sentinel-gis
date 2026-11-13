@@ -1,0 +1,45 @@
+{
+  "provider": "NASA POWER (Prediction of Worldwide Energy Resources)",
+  "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point",
+  "community": "AG",
+  "data_type": "Satellite- and model-derived estimates, not a farm measurement",
+  "latitude": 15.29,
+  "longitude": 120.02,
+  "start": "20160101",
+  "end": "20251231",
+  "time_standard": "LST",
+  "retrieved_utc": "2026-11-13T05:52:24+00:00",
+  "rows": 3653,
+  "variables": {
+    "T2M": {
+      "units": "C",
+      "name": "Temperature at 2 Meters"
+    },
+    "RH2M": {
+      "units": "%",
+      "name": "Relative Humidity at 2 Meters"
+    },
+    "PRECTOTCORR": {
+      "units": "mm/day",
+      "name": "Precipitation Corrected"
+    },
+    "ALLSKY_SFC_SW_DWN": {
+      "units": "MJ/m^2/day",
+      "name": "All Sky Surface Shortwave Downward Irradiance"
+    }
+  },
+  "missing_values": {
+    "T2M": 0,
+    "RH2M": 0,
+    "PRECTOTCORR": 0,
+    "ALLSKY_SFC_SW_DWN": 0
+  },
+  "quality_checks": {
+    "has_rows": true,
+    "no_missing": true,
+    "T2M_plausible": true,
+    "RH_plausible": true,
+    "rain_not_negative": true
+  },
+  "resolution_note": "Gridded regional product. Confirm exact grid size in POWER metadata before quoting."
+}

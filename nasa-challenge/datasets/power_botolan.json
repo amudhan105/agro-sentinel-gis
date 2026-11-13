@@ -5,8 +5,8 @@
   "data_type": "satellite and model-derived gridded estimate (not a farm measurement)",
   "latitude": 15.29,
   "longitude": 120.02,
-  "start": "2023-11-05",
-  "end": "2026-11-04",
+  "start": "2023-11-07",
+  "end": "2026-11-06",
   "time_standard": "LST",
   "parameters": {
    "T2M": {
@@ -27,30 +27,16 @@
    }
   },
   "spatial_resolution_note": "Regional grid cell; check current POWER metadata for exact size",
-  "retrieved_at_utc": "2026-11-11T05:49:37+00:00",
+  "retrieved_at_utc": "2026-11-13T06:03:58+00:00",
   "is_cached": false,
   "missing_values": {
    "T2M": 0,
    "RH2M": 0,
    "PRECTOTCORR": 0,
-   "ALLSKY_SFC_SW_DWN": 1
+   "ALLSKY_SFC_SW_DWN": 3
   }
  },
  "records": [
-  {
-   "date": "2023-11-05",
-   "T2M": 26.53,
-   "RH2M": 87.25,
-   "PRECTOTCORR": 3.34,
-   "ALLSKY_SFC_SW_DWN": 17.88
-  },
-  {
-   "date": "2023-11-06",
-   "T2M": 26.61,
-   "RH2M": 85.3,
-   "PRECTOTCORR": 5.72,
-   "ALLSKY_SFC_SW_DWN": 18.57
-  },
   {
    "date": "2023-11-07",
    "T2M": 26.61,
@@ -7707,6 +7693,20 @@
    "T2M": 26.7,
    "RH2M": 79.24,
    "PRECTOTCORR": 0.9,
+   "ALLSKY_SFC_SW_DWN": null
+  },
+  {
+   "date": "2026-11-05",
+   "T2M": 25.66,
+   "RH2M": 76.32,
+   "PRECTOTCORR": 0.02,
+   "ALLSKY_SFC_SW_DWN": null
+  },
+  {
+   "date": "2026-11-06",
+   "T2M": 25.2,
+   "RH2M": 75.44,
+   "PRECTOTCORR": 0.0,
    "ALLSKY_SFC_SW_DWN": null
   }
  ]
