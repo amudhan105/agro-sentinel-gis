@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agro-Sentinel Data Room</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Sentinel Data</h1>
+  <p>NASA POWER climate data for Botolan, Zambales, prepared by Amudhan S
+     (GIS and Remote Sensing).</p>
+  <p class="status">Version 0, work in progress. Regional satellite and
+     model-derived estimates, not farm measurements and not agronomic advice.
+     The location is a planning point and the pilot plot is a placeholder.</p>
+</header>
+
+<main>
+<section>
+  <h2>1. Data source and provenance</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>Variable</th><th>Unit</th><th>Period</th>
+            <th>Location (lat, lon)</th><th>Type</th><th>Retrieved (UTC)</th>
+            <th>Status</th></tr>
+      </thead>
+      <tbody id="prov-body"><tr><td colspan="8">Loading...</td></tr></tbody>
+    </table>
+  </div>
+  <p class="note" id="prov-note"></p>
+</section>
+
+<section>
+  <h2>2. Monthly climate, 2016 to 2025</h2>
+  <div class="scroll">
+    <table>
+      <thead id="month-head"></thead>
+      <tbody id="month-body"><tr><td>Loading...</td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">rain_mean_mm is the average of the monthly totals across
+     years (mm per month, not per day). The wet/dry label is an assumption
+     from the team documents: May averages about 182 mm, so check it before
+     treating May as dry.</p>
+</section>
+
+<section>
+  <h2>3. Downloads</h2>
+  <ul>
+    <li><a href="data/power_botolan.json">Daily data with metadata (JSON)</a></li>
+    <li><a href="data/power_monthly_summary.csv">Monthly summary (CSV)</a></li>
+    <li><a href="data/power_monthly_summary_meta.json">Monthly summary notes (JSON)</a></li>
+    <li><a href="data/pilot_plot.geojson">Pilot plot, PLACEHOLDER only (GeoJSON)</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Limits you know</h2>
+  <ul>
+    <li>POWER is a regional grid value, not a measurement of one plot.
+        Confirm the exact grid size in POWER's own metadata before quoting it.</li>
+    <li>The coordinates are a planning point and the pilot plot boundary is
+        a placeholder until the team confirms the real plot.</li>
+    <li>The 10-year monthly averages are a short record and include a few
+        extreme storms.</li>
+    <li>Rain from one month of comparison (Sept 2024) differed between POWER
+        and IMERG by up to about 145 mm on a single day. Neither is ground truth.</li>
+    <li>August 2026 shows about 1,362 mm in POWER. That is unverified and
+        needs rain-gauge data.</li>
+    <li>null means a missing value, not zero.</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p class="note">Data: NASA POWER. Scripts and notes are in the project repository.</p>
+</footer>
+
+<script>
+function addRow(tbody, cells) {
+  var tr = document.createElement("tr");
+  cells.forEach(function (text) {
+    var td = document.createElement("td");
+    td.textContent = text;
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
+}
+
+fetch("data/power_botolan.json")
+  .then(function (r) {
+    if (!r.ok) { throw new Error("HTTP " + r.status); }
+    return r.json();
+  })
+  .then(function (d) {
+    var m = d.metadata;
+    var body = document.getElementById("prov-body");
+    body.textContent = "";
+    Object.keys(m.parameters).forEach(function (code) {
+      var p = m.parameters[code];
+      addRow(body, [
+        m.provider,
+        code + " (" + p.name + ")",
+        p.unit || "n/a",
+        m.start + " to " + m.end,
+        m.latitude + ", " + m.longitude,
+        m.data_type,
+        m.retrieved_at_utc,
+        m.is_cached ? "Cached copy" : "Fetched live at retrieval time"
+      ]);
+    });
+    document.getElementById("prov-note").textContent =
+      m.spatial_resolution_note + ". Time standard: " + m.time_standard +
+      ". Days: " + d.records.length +
+      ". Missing values: " + JSON.stringify(m.missing_values) + ".";
+  })
+  .catch(function (e) {
+    document.getElementById("prov-body").textContent = "";
+    document.getElementById("prov-note").textContent =
+      "Could not load the data (" + e.message +
+      "). Open this page through a local server, not by double-clicking.";
+  });
+
+fetch("data/power_monthly_summary.csv")
+  .then(function (r) {
+    if (!r.ok) { throw new Error("HTTP " + r.status); }
+    return r.text();
+  })
+  .then(function (t) {
+    var lines = t.trim().split(/\r?\n/);
+    var head = document.getElementById("month-head");
+    var tr = document.createElement("tr");
+    lines[0].split(",").forEach(function (h) {
+      var th = document.createElement("th");
+      th.textContent = h;
+      tr.appendChild(th);
+    });
+    head.appendChild(tr);
+    var body = document.getElementById("month-body");
+    body.textContent = "";
+    lines.slice(1).forEach(function (line) { addRow(body, line.split(",")); });
+  })
+  .catch(function (e) {
+    document.getElementById("month-body").textContent =
+      "Could not load the monthly data (" + e.message + ").";
+  });
+</script>
+</body>
+</html>
