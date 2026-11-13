@@ -1,5 +1,9 @@
 ﻿# NASA data for AgriMind AI (owner: Amudhan)
 
+Status (13 Nov 2026): data refreshed live (2023-11-07 to 2026-11-06,
+is_cached false). Coordinates are STILL the planning point (15.29 N,
+120.02 E). The pilot plot is NOT confirmed yet.
+
 ## What is here
 - datasets/power_botolan.json: 3 years of daily NASA POWER data for a
   planning point near Botolan (15.29 N, 120.02 E), with provenance

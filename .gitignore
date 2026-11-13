@@ -5,3 +5,5 @@ __pycache__/
 *.nc
 *.tif
 .dodsrc
+nasa-challenge/package/
+nasa-challenge/power_package.*
